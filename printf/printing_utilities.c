@@ -47,14 +47,18 @@ int print_freeze(char *str, int len)
 	return (len);
 }
 
-int printvoid(void *str, int len)
+int printvoid(void *str, int len, int type)
 {
 	unsigned long int aux;
 	char 	*aux2;
 
+	aux2 = NULL;
 	aux = (unsigned long int)str;
-	aux2 = itoa_hexa(aux, "0123456789abcdefg");
-	if (aux2)
+	if(type == 0 || type == 1)
+		aux2 = itoa_hexa(aux, "0123456789abcdefg");
+	else if(type == 2)
+		aux2 = itoa_hexa(aux, "0123456789ABCDEFG");
+	if (aux2 && type == 0)
 	{
 		write(1, "0x", 2);
 		len = len + 2;
