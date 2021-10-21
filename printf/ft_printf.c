@@ -1,13 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/21 12:14:11 by jsanfeli          #+#    #+#             */
+/*   Updated: 2021/10/21 12:31:23 by jsanfeli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
 int	ft_printf(const char *str, ...)
 {
-	int	len;
-	size_t i;
-	va_list args;
+	int		len;
+	size_t	i;
+	va_list	args;
 
 	va_start(args, str);
 	len = 0;
@@ -19,7 +28,7 @@ int	ft_printf(const char *str, ...)
 			len = ft_translate(args, str[i + 1], len);
 			i = i + 2;
 		}
-		else 
+		else
 		{
 			write(1, &str[i++], 1);
 			len++;
@@ -29,7 +38,7 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-int ft_translate(va_list args, char c, int len)
+int	ft_translate(va_list args, char c, int len)
 {
 	if (c == 'c')
 		len = print_char(va_arg(args, int), len);
@@ -47,7 +56,7 @@ int ft_translate(va_list args, char c, int len)
 		len = printvoid(va_arg(args, void *), len, 2);
 	else if (c == '%')
 	{
-		write(1, "%",1);
+		write(1, "%", 1);
 		len++;
 	}
 	return (len);
