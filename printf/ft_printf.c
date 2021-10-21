@@ -52,15 +52,3 @@ int ft_translate(va_list args, char c, int len)
 	}
 	return (len);
 }
-
-int main()
-{
-	int size;
-	int sizee;
-	
-	size = ft_printf("Mio %u ", -1);
-	sizee = printf("Suyo %u ", -1);
-	printf("\n Mio %d\n", size);
-	printf("Suyo %d\n", sizee);
-	return 0;
-}

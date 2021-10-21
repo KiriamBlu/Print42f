@@ -10,10 +10,11 @@ int					print_char(char c, int len);
 int					print_str(char *str, int len);
 int					print_freeze(char *str, int len);
 int					printvoid(void *ptr, int len, int type);
-size_t				len(int n, int sign);
+size_t				len(unsigned int n, int sign);
 char				*itoa(int n, int sign);
-char				*itoa_hexa(unsigned long int n, char *base);
-unsigned long int	lenhexa(unsigned long int n);
+char				*itoa_hexa(unsigned long int n, char *base, int type);
+unsigned long int	lenlonghexa(unsigned long int n);
+unsigned int 		unsignedlenhexa(unsigned int n);
 
 
 #endif
