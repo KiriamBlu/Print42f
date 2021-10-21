@@ -55,9 +55,9 @@ int printvoid(void *str, int len, int type)
 	aux2 = NULL;
 	aux = (unsigned long int)str;
 	if(type == 0)
-		aux2 = itoa_hexa(aux, "0123456789abcdefg",0);
+		aux2 = itoa_hexa(aux, "0123456789abcdefg", 0);
 	else if(type == 1)
-		aux2 = itoa_hexa(aux, "0123456789abcdefg",1);
+		aux2 = itoa_hexa(aux, "0123456789abcdefg", 1);
 	else if(type == 2)
 		aux2 = itoa_hexa(aux, "0123456789ABCDEFG", 2);
 	if (aux2 && type == 0)

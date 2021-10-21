@@ -28,15 +28,15 @@ char *itoa(int n, int sgn)
 	return (str);
 }
 
-char *itoa_hexa(unsigned long int n, char *base, int type)
+char *itoa_hexa(unsigned long int n, char *base,int type)
 {
 	unsigned long int i;
 	char *str;
 
 	if (type == 0)
-		i = lenlonghexa(n);
+		i = lenhexa(n);
 	else
-		i = unsignedlenhexa((unsigned int)n);
+		i = (unsigned int)lenhexa((unsigned int)n);
 	str = (char *)malloc (i * sizeof(char) + 1);
 	if (!str)
 		return (0);
@@ -70,23 +70,9 @@ size_t len(unsigned int n, int sign)
 	return (i);
 }
 
-unsigned long int lenlonghexa(unsigned long int n)
+unsigned long int lenhexa(unsigned long int n)
 {
 	unsigned long int i;
-
-	i = 0;
-	if (n == 0)
-		return(1);
-	while (n != 0)
-	{
-		n = n / 16;
-		i++;
-	}
-	return(i);
-}
-unsigned int unsignedlenhexa(unsigned int n)
-{
-	unsigned int i;
 
 	i = 0;
 	if (n == 0)
