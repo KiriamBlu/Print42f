@@ -6,7 +6,7 @@
 /*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 12:26:40 by jsanfeli          #+#    #+#             */
-/*   Updated: 2021/10/21 12:31:24 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:25:05 by jsanfeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ char	*itoa(int n, int sgn)
 	char			*str;
 	size_t			i;
 	unsigned int	l;
-	int				sign;
 
-	sign = 0;
 	l = n;
 	if (sgn == 1 && n < 0)
 	{
-		sign = 1;
 		l = n * -1;
+		i = len(l, 1);
 	}
-	i = len(l, sign);
+	else
+		i = len(l, 0);
 	str = (char *)malloc(i * sizeof(char) + 1);
+	if (!str)
+		return(NULL);
 	str[i--] = '\0';
-	if (sign == 1)
+	if (sgn == 1)
 		str[0] = '-';
 	while (i > 0 && l >= 10)
 	{
@@ -51,7 +52,7 @@ char	*itoa_hexa(unsigned long int n, char *base, int type)
 		i = (unsigned int)lenhexa((unsigned int)n);
 	str = (char *)malloc (i * sizeof(char) + 1);
 	if (!str)
-		return (0);
+		return (NULL);
 	str[i--] = '\0';
 	while (i > 0 && n > 15)
 	{
